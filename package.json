@@ -1,0 +1,27 @@
+{
+  "name": "travel-blog",
+  "version": "1.0.0",
+  "description": "A blog of travel experiences",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjk116/travel-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bjk116/travel-blog/issues"
+  },
+  "homepage": "https://github.com/bjk116/travel-blog#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.13.0",
+    "sequelize": "^4.3.2"
+  }
+}
