@@ -4,29 +4,38 @@ module.exports = function(sequelize, DataTypes) {
 		title: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			validate: {
-				len: [1, 160]
-			}
+			len: [1, 160]
 		},
 		body: {
 			type: DataTypes.TEXT,
 			allowNull: false,
 			len: [1]
 		},
+		summary: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
 		category: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			defaultValue: 'Tourist Attraction'
 		},
-		location: {
-			//For holding longtitude and latitude
-			type: DataTypes.ARRAY(DataTypes.DOUBLE),
+		country: {
+			//Right now, assuming we use a string Address
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		state:{
+			type: DataTypes.STRING,
+			allowNull: true
+		},
+		city: {
+			type: DataTypes.STRING,
 			allowNull: false
 		},
 		rating: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
-			defaultValue: 1
 		}
 	});
 
