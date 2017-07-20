@@ -8,5 +8,9 @@ module.exports = function(app) {
 	//Home page
 	app.get('/', function(req, res) {
 		res.render('index');
-	})
+	});
+
+	app.get('/create-blog', function(req, res) {
+		res.render('createBlog');
+	});
 }
