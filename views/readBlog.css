@@ -1,0 +1,47 @@
+#blog-header {
+  background-size: cover;
+  text-align: center;
+  background-image: url("../public/assets/images/readBlogHdrBack1.jpeg");
+  background-size: 100% 100%;
+  height: 100px;
+}
+
+#txt-on-image {
+	padding-top: 25px;
+}
+
+
+#headerImage {
+	padding-top: 25px;
+	height: 200px;
+	display: block;
+	margin: auto;
+}
+
+.blog-content {
+	margin: 25px;
+	padding: 25px;
+	border-radius: 5px;
+	border-style: solid;
+	height: 150px;
+	width: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	word-wrap: break-word;
+	white-space: normal;
+	scroll-behavior: 
+}
+
+#btn-prev-blog {
+	float: left;
+	width: 7em;
+	height: 2em;
+	border-radius: 10px;
+}
+
+#btn-next-blog {
+	float: right;
+	width: 7em;
+	height: 2em;
+	border-radius: 10px;
+}

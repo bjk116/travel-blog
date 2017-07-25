@@ -1,0 +1,27 @@
+header {
+	background-image: url("../public/assets/images/writeBlogHdrBack.jpeg");
+	background-size: 100% 100%;
+	height: 150px;
+	text-align: center;
+}
+
+.form-horizontal {
+	margin: 10%;
+	margin-top: .5%;
+	width: 80%;
+	border-style: solid;
+	border-radius: 50px;
+}
+
+legend {
+	text-align: center;
+	border-bottom-color: black;
+}
+
+.form-group {
+	align-items: center;
+}
+
+#blogBody {
+	width: 200%;
+}
