@@ -11,7 +11,7 @@ var app = express();
 var db = require('./models');
 
 //Allow handlebars to access public folder, set up body parser middleware
-app.use(express.static('./public'));
+app.use(express.static('public'));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
