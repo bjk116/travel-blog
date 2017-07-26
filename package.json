@@ -19,6 +19,7 @@
   "homepage": "https://github.com/bjk116/travel-blog#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "connect-ensure-login": "^0.1.1",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "method-override": "^2.3.9",

@@ -1,14 +1,13 @@
 //Setting up passport information
 
 //Dependencies
-var LocalStrategy		= require('passport-local').Strategy;
 var FacebookStrategy	= require('passport-facebook').Strategy;
 
 //load up user model
 var user 				= require('../models/author.js');
 
 //Load the config variables
-var configAuth			= require('./auth');
+var configAuth			= require('./auth.js');
 
 module.exports = function(passport) {
 	
@@ -28,14 +27,14 @@ module.exports = function(passport) {
 		//pull in our app ide and secret code from auth.js
 		clientID		: configAuth.facebookAuth.clientID,
 		clientSecret	: configAuth.facebookAuth.clientSecret,
-		callbackURL		: configAuth.facebookAuth.callbackURL
+		callbackURL		: configAuth.facebookAuth.callbackURL,
+		scope: ['user_friends'],
+		profileFields: ['friends', 'photo']
 
 	},
 	//Facebook will send back the token and profile
 	function(token, refreshToken, profile, done) {
 		//Find if u
-	}
-
-
-	))	
+	}));
+		
 }
