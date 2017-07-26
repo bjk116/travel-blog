@@ -1,0 +1,19 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="../../public/assets/css/readBlog.css">
+</head>
+<body>
+<div id="blog-header">
+		
+	<!-- <h1><span id="txt-on-image">Begin your journey - Read what other travellers have to say!!!</span></h1> -->
+	<h1 id="txt-on-image">Begin your journey - Read what other travellers have to say!!!</h1>
+</div>
+
+{{#each blogs}}
+<div class="blog-content">
+	<p class="blog-info">Author: {{this.facebookID}} </p>
+	<p class="blog-info">Create Date: {{this.createdAt}} </p>
+	<p class="blog-info">Title: {{this.title}} </p>
+	<p id=blog-text> {{this.body}}</p>
+</div>
+{{/each}}
+</body>
