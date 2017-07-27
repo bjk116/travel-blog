@@ -38,7 +38,29 @@ module.exports = function(passport) {
 	},
 	//Facebook will send back the token and profile
 	function(token, refreshToken, profile, done) {
-		console.log(profile);
+
+		var user_facebook_id = profile._json.id;
+
+		db.Users.findOne({
+			where: {facebook_id: user_facebook_id}
+		}).then(function(results) {
+
+			//If this person has never been here before, create them in DB
+			if(results == null) {
+				//relevant user data fields to put in DB
+				var user_first_name = profile._json.first_name;
+				var user_last_name = profile._json.last_name;
+				var profileImage = profile._json.picture.data.url;
+
+				db.Users.create({
+					first_name: user_first_name,
+					last_name: user_last_name,
+					profile_url: profileImage,
+					facebook_id: user_facebook_id
+				});
+			}
+		});
+
 		return done(null, profile);
 	}));
 		
