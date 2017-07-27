@@ -1,13 +1,15 @@
 //Setting up passport information
 
 //Dependencies
-var FacebookStrategy	= require('passport-facebook').Strategy;
+var FacebookStrategy	= require('passport-facebook');
 
 //load up user model
-var user 				= require('../models/author.js');
+var User 				= require('../models/Users.js');
 
 //Load the config variables
 var configAuth			= require('./auth.js');
+var db 					= require('../models');
+
 
 module.exports = function(passport) {
 	
@@ -18,8 +20,10 @@ module.exports = function(passport) {
 
 	//Used to deserialize the user
 	passport.deserializeUser(function(id, done) {
-		User.findByID(id, function(err, user) {
-			done(err, user);
+		console.log('desrializing');
+		console.log('about to search');
+		db.Users.findAll({where:{ facebook_id: id}}).then(function(user){
+			done(null, user);
 		});
 	});
 	
@@ -29,12 +33,13 @@ module.exports = function(passport) {
 		clientSecret	: configAuth.facebookAuth.clientSecret,
 		callbackURL		: configAuth.facebookAuth.callbackURL,
 		scope: ['user_friends'],
-		profileFields: ['friends', 'photo']
+		profileFields: ['id', 'name', 'friends', 'photos']
 
 	},
 	//Facebook will send back the token and profile
 	function(token, refreshToken, profile, done) {
-		//Find if u
+		console.log(profile);
+		return done(null, profile);
 	}));
 		
 }

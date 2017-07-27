@@ -4,7 +4,7 @@
 var Sequelize = require("sequelize");
 
 //Set up connection information
-var sequelize = new Sequelize('blogs_database', 'root', 'PassWordHere', {
+var sequelize = new Sequelize('blogs_database', 'root', 'Bourassa13!bk', {
 	host: 'localhost',
 	dialect: 'mysql',
 	pool: {

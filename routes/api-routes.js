@@ -5,7 +5,7 @@ var db = require('../models');
 var helper = require('./helper.js');
 
 //Routes
-module.exports = function(app) {
+module.exports = function(app, passport) {
 	//C - Create
 	app.post('/create-blog', function(req, res) {
 		console.log(req.body);
