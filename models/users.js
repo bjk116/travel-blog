@@ -11,8 +11,11 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//GENERATED FROM FORM
 		facebook_id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 			allowNull: false
+		},
+		profile_url: {
+			type: DataTypes.STRING
 		}
 	});
 

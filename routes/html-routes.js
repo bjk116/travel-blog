@@ -6,7 +6,7 @@ var path = require('path');
 //passwords
 var configAuth = require('../config/auth.js');
 
-var ensureLogged = require('connect-ensure-login');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 //Routes
 module.exports = function(app, passport) {
@@ -17,19 +17,22 @@ module.exports = function(app, passport) {
 	app.get('/', function(req, res) {
 		res.sendFile(path.join(__dirname, "../views/welcomepage.html"))});
 
-	app.get('/welcome', function(req, res) {
-		ensureLogged.ensureLoggedIn('/'),
-		function(req, res){
+	app.get('/welcome', ensureLoggedIn('/error'), function(req, res) {		
+    	var image = req.user[0].dataValues.profile_url;
+    	console.log('image');
+    	console.log(req.user[0].dataValues.profile_url);
+    	console.log('all info');
+    	console.log(req.user[0].dataValues);
+    	var user = {
+    		firstName: req.user[0].dataValues.first_name,
+    		profileURL: req.user[0].dataValues.profile_url
+    	}
+		res.render('welcome', user);
+	});
 
-    	console.log('Friends:');
-    	//Only shows friends who have used this app by design
-    	console.log(req.user._json.friends.data);
-    	console.log('Pictures:');
-    	console.log(req.user._json)
-    	res.render('profile', { user: req.user });
-
-		res.sendFile(path.join(__dirname, "../views/welcome.html"));
-	}});
+	app.get('/error', function(req, res) {
+		res.sendFile(path.join(__dirname, "../views/error.html"));
+	});
 
 	app.get('/auth/facebook',
 		passport.authenticate('facebook'));
@@ -39,13 +42,13 @@ module.exports = function(app, passport) {
 											  successRedirect: '/welcome'}));
 
   	app.get('/profile',
-		require('connect-ensure-login').ensureLoggedIn(),
+		ensureLoggedIn('/'),
 		function(req, res){
     	// console.log('Req:');
     	// console.log(req);
     	console.log('Data:');
     	//Only shows friends who have used this app by design
-    	console.log(req.user._json);
+    	console.log(req.user);
     	res.render('profile');
   	});
 
