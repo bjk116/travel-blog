@@ -1,22 +1,22 @@
 {
   "development": {
-    "username": "root",
-    "password": "Bourassa13!bk",
-    "database": "blog_database",
+    "username": "owbx0ma9ifabldcm",
+    "password": "wegw91qpozj4tequ",
+    "database": "klsqv7pvszwn7b5y",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
+    "username": "owbx0ma9ifabldcm",
+    "password": "wegw91qpozj4tequ",
+    "database": "klsqv7pvszwn7b5y",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "owbx0ma9ifabldcm",
+    "password": "wegw91qpozj4tequ",
+    "database": "klsqv7pvszwn7b5y",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
