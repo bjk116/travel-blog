@@ -2,6 +2,9 @@
   "name": "travel-blog",
   "version": "1.0.0",
   "description": "A blog of travel experiences",
+  "engines": {
+    "node": "6.10.0"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
