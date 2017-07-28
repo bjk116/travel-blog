@@ -9,14 +9,9 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//FORM
 		body: {
-			type: DataTypes.BLOB,
+			type: DataTypes.TEXT,
 			allowNull: false,
 			len: [1]
-		},
-		//GENERATED FROM FORM
-		summary: {
-			type: DataTypes.STRING,
-			allowNull: false
 		},
 		//FORM
 		category: {
@@ -25,20 +20,9 @@ module.exports = function(sequelize, DataTypes) {
 			defaultValue: 'Tourist Attraction'
 		},
 		//GENERATED FROM FORM
-		country: {
+		location: {
 			//Right now, assuming we use a string Address
 			//Array of Strings?
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		//GENERATED FROM FORM
-		state: {
-			//For use by USA, Canada, Australia, works as Province
-			type: DataTypes.STRING,
-			allowNull: true
-		},
-		//GENERATED FROM FORM
-		city: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
@@ -46,11 +30,6 @@ module.exports = function(sequelize, DataTypes) {
 		rating: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
-		},
-		//GENERATED FROM FACEBOOK NODE
-		facebookID: {
-			type: DataTypes.INTEGER,
-			allowNull: false
 		}
 	});
 
