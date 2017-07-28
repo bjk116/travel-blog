@@ -38,13 +38,15 @@ module.exports = function(app, passport) {
 	//Getting posts for a specific location
 	app.get('/search/:location', function(req, res) {
 		var location = req.params.location.toLowerCase();
-		var whereCondition = 'LOWER (location) LIKE %' + location + '%';
+		var whereCondition = '%'+location+'%';
 		//Search DB based on location
-		console.log(whereCondition);
+		// console.log(whereCondition);
 		db.BlogPost.findAll({
+			where: { location: { $like: whereCondition } },
 			limit: 10,
-			where: sequelize.and([whereCondition]),
+			include: [db.Users]	
 		}).then(function(blogSearchResults) {
+			console.log(blogSearchResults);
 			res.json(blogSearchResults);
 		});
 	});
