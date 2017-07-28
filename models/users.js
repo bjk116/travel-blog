@@ -16,6 +16,12 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		profile_url: {
 			type: DataTypes.STRING
+		},
+		UserId: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			auto_increment: true,
+			defaultValue: 1
 		}
 	});
 

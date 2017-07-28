@@ -8,14 +8,21 @@ var helper = require('./helper.js');
 module.exports = function(app, passport) {
 	//C - Create
 	app.post('/create-blog', function(req, res) {
+		console.log('req.body');
 		console.log(req.body);
-		//Create rest of information required for database entry
-		//function to get summary of blog post
-		var summary = helper.getSummary(req.body.blogBody);
-		helper.parseLocation(req.body.location, function(data) {
+		console.log(req.user[0].dataValues.facebook_id);
 
+		db.BlogPost.create({
+			title: req.body.blogTitle,
+			body: req.body.blogBody,
+			category: req.body.blogCategory,
+			location: req.body.blogLocation,
+			rating: req.body.blogRating,
+			//Facebook ID used for user Id
+			UserId: req.user[0].dataValues.UserId
 		});
-		console.log(summary);
+
+		res.redirect('/loggedIn');
 	});
 
 	//Getting all posts
