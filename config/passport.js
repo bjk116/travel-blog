@@ -38,6 +38,15 @@ module.exports = function(passport) {
 	},
 	//Facebook will send back the token and profile
 	function(token, refreshToken, profile, done) {
+		var friendsList = "";
+		console.log('profile');
+		console.log(profile._json.friends.data);
+		//generate friends list
+		var friends = profile._json.friends.data
+		for(var i = 0; i< friends.length; i++) {
+			console.log(friends[i].id);
+			friendsList += friends[i].id + ' ';
+		}
 
 		var user_facebook_id = profile._json.id;
 
@@ -56,8 +65,30 @@ module.exports = function(passport) {
 					first_name: user_first_name,
 					last_name: user_last_name,
 					profile_url: profileImage,
+					facebook_friends: friendsList,
 					facebook_id: user_facebook_id
 				});
+			} else {//otherwise make sure information is up to date
+				//foo bar
+				//relevant user data fields to put in DB
+				var user_first_name = profile._json.first_name;
+				var user_last_name = profile._json.last_name;
+				var profileImage = profile._json.picture.data.url;
+
+				db.Users.update({
+						first_name: user_first_name,
+						last_name: user_last_name,
+						profile_url: profileImage,
+						facebook_friends: friendsList,
+						facebook_id: user_facebook_id
+					},
+					{
+						where: {
+							id: user_facebook_id
+						}
+					}).then(function(result) {
+						console.log(result);
+					});
 			}
 		});
 

@@ -41,31 +41,34 @@ module.exports = function(app, passport) {
   	app.get('/profile', ensureLoggedIn('/login'), function(req, res) {
     	var image = req.user[0].dataValues.profile_url;
 
+        //User information
+        console.log(req.user[0]);
+
     	db.BlogPost.findAll({
     		where: {
-    			UserId: req.user[0].dataValues.UserId
+    			UserId: req.user[0].dataValues.id
     		}
     	}).then(function(results) {
-
-    		var titles = [];
+    		var titlesAndLinks = [];
     		
     		for(var i = 0; i<results.length; i++) {
-    			titles.push(results[i].dataValues.title);
+                var postLink = "/read/"+results[i].dataValues.id;
+    			titlesAndLinks.push({
+                    title: results[i].dataValues.title,
+                    link: postLink,
+                    category: results[i].dataValues.category
+                });
     		}
-    		/*
-    		console.log('RESULTS');
-    		console.log(results);*/
     	  	
     	  	var user = {
     			firstName: req.user[0].dataValues.first_name,
     			lastName: req.user[0].dataValues.last_name,
     			profileURL: image,
-    			post: titles
+    			post: titlesAndLinks,
     		}
     		console.log(user);
     		res.render('profile', user);
-    	})
-
+    	});
   	});
 
 	app.get('/create-blog', ensureLoggedIn('/login'), function(req, res) {

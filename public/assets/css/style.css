@@ -137,3 +137,11 @@ background-color: black;
 }
 
 
+.profileImage {
+    height:75px;
+    width: 75px;
+}
+
+#goBackBtn {
+    margin-top:20px;
+}

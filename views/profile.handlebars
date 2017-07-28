@@ -1,13 +1,23 @@
-<h2>Profile:</h2>
-<hr>
-<h3>Name: {{firstName}}  {{lastName}}</h3>
-<img src={{profileURL}}>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
 
-<hr>
-<h3>Posts Created:</h3>
+<div class = 'container'>
+	<div class = 'row'>
+		<div class = 'col-md-10 offset-md-2'>
+			<a href="/loggedIn"><button type="button" class="btn btn-primary" id="goBackBtn">Back to Home Page</button></a>
+			<hr>
+			<h3>{{firstName}}  {{lastName}}</h3>
+			<img src={{profileURL}} class = "profileImage">
 
-{{#each post}}
-	<h3><a href=''>{{this}}</a></h3>
-{{/each}}
-<hr>
-<h3>Friends:</h3>
+			<hr>
+			<h3>Posts Created:</h3>
+
+			{{#each post}}
+				<h3><a href={{this.link}}>{{this.title}}</a></h3> <h4>{{this.category}}</h4>
+			{{/each}}
+			<hr>
+			<h3>Friends:</h3>
+		</div>
+	</div>
+</div>
