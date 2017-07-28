@@ -1,0 +1,13 @@
+<h2>Profile:</h2>
+<hr>
+<h3>Name: {{firstName}}  {{lastName}}</h3>
+<img src={{profileURL}}>
+
+<hr>
+<h3>Posts Created:</h3>
+
+{{#each post}}
+	<h3><a href=''>{{this}}</a></h3>
+{{/each}}
+<hr>
+<h3>Friends:</h3>

@@ -1,0 +1,2 @@
+INSERT INTO BlogPost (title, body, summary, category, country, city, rating)
+VALUES ('My Trip to Dunns River Falls', 'I went to visit the Dunn Rivers Falls in Jamaica.  It was amazing!', 'Waterfall Visit', 'Tourist Attraction', 'Jamaica', 'Kingston', 5);
