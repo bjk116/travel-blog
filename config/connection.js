@@ -2,6 +2,7 @@
 
 //Dependencies
 var Sequelize = require("sequelize");
+var mysql = require('mysql');
 
 //Set up connection information
 //Creates MySQL connection using Sequelize
