@@ -4,7 +4,7 @@
 var FacebookStrategy	= require('passport-facebook');
 
 //load up user model
-var User 				= require('../models/Users.js');
+var User 				= require('../models/users.js');
 
 //Load the config variables
 var configAuth			= require('./auth.js');
