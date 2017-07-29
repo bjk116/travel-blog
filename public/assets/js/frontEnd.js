@@ -27,7 +27,7 @@ $(document).ready(function(){
 			} else {
 
 				for(var i = 0; i<data.length; i++) {
-					$('#results').html('<li class = "list-group-item"><a href=\'/read/'+data[i].id+'\'>' + data[i].title + ' ' +
+					$('#results').append('<li class = "list-group-item"><a href=\'/read/'+data[i].id+'\'>' + data[i].title + ' ' +
 											 data[i].rating +'/5 , By ' + data[i].User.first_name + ' ' +
 											 data[i].User.last_name + ' </a></li>');
 				}

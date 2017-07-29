@@ -39,22 +39,14 @@ module.exports = function(app, passport) {
 	app.get('/search/:location', function(req, res) {
 		var location = req.params.location.toLowerCase();
 		var whereCondition = '%'+location+'%';
-		//Search DB based on location
-		// console.log(whereCondition);
+		//Search DB based on location, find locations like the one submitted
 		db.BlogPost.findAll({
 			where: { location: { $like: whereCondition } },
 			limit: 10,
 			include: [db.Users]	
 		}).then(function(blogSearchResults) {
-			console.log(blogSearchResults);
 			res.json(blogSearchResults);
 		});
 	});
-	//Filtering by rating
-
-	//Filter by rating AND location
-
-	//Filter by name search
-
 
 }

@@ -38,19 +38,19 @@ module.exports = function(app, passport) {
 		passport.authenticate('facebook', 	{ failureRedirect: '/' ,
 											  successRedirect: '/loggedIn'}));
 
+    //Render User Profile
   	app.get('/profile', ensureLoggedIn('/login'), function(req, res) {
+        //Profile Picture
     	var image = req.user[0].dataValues.profile_url;
-
-        //User information
-        console.log(req.user[0]);
 
     	db.BlogPost.findAll({
     		where: {
+                //Find all blog posts associated with req.user
     			UserId: req.user[0].dataValues.id
     		}
     	}).then(function(results) {
     		var titlesAndLinks = [];
-    		
+    		//Set posts/links in handlebars
     		for(var i = 0; i<results.length; i++) {
                 var postLink = "/read/"+results[i].dataValues.id;
     			titlesAndLinks.push({
@@ -59,14 +59,14 @@ module.exports = function(app, passport) {
                     category: results[i].dataValues.category
                 });
     		}
-    	  	
+    	  	//Create object to render
     	  	var user = {
     			firstName: req.user[0].dataValues.first_name,
     			lastName: req.user[0].dataValues.last_name,
     			profileURL: image,
-    			post: titlesAndLinks,
-    		}
-    		console.log(user);
+    			post: titlesAndLinks
+    		};
+
     		res.render('profile', user);
     	});
   	});
