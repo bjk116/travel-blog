@@ -83,14 +83,16 @@
  		["LOCATION_5",10.5929,122.6325]
  		];
 
-var map = L.map('map').setView([0, 0], 1);
-mapLink =
-   '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-L.tileLayer(
-   'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-   attribution: '&copy; ' + mapLink + ' Contributors',
-   maxZoom: 18,
-   }).addTo(map);
+var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osmAttrib='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+var map = new L.Map('map').addLayer(osm).setView([0, 0], 2);
+
+var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Search location...'});
+
+map.addControl(osmGeocoder);
+
+L.control.mousePosition().addTo(map);
 
 for (var i = 0; i < locations.length; i++) {
 	marker = new L.marker([locations[i][1],locations[i][2]])
