@@ -8,10 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-
-  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-  <script src="./leafletplugins.js"></script>
 
 </head>
 
@@ -20,7 +16,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="/create-blog">Create Blog</a>
+      <a class="navbar-brand" href="#">Travel Blog</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,32 +51,22 @@
           <button class="btn btn-success" id="submit" type="submit">Search Blogs!</button>
         </form>
       </div>
+      
 
 
-
-    <div class="row" id="results">
+    <div class="row" id="resultsDiv">
+      <ul id = "results" class="list-group">
+      </ul>
     </div>
 
-	<div id="map"></div>
 
 
  <Footer> &copy; The Gypsie Kings 2017 </Footer>
-
- <script>
-
- var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
- var osmAttrib='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
- var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
- var map = new L.Map('map').addLayer(osm).setView([48.5, 2.5], 15);
-
- var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Search location...'});
-
- map.addControl(osmGeocoder);
-
- L.control.mousePosition().addTo(map);
-
- </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src = "assets/js/frontEnd.js"></script>
 
 </body>
 
 </html>
+
+

@@ -17,6 +17,10 @@ module.exports = function(sequelize, DataTypes) {
 		profile_url: {
 			type: DataTypes.STRING
 		},
+		facebook_friends: {
+			type: DataTypes.STRING,
+			allowNull: true
+		},
 		UserId: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

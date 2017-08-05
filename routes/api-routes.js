@@ -3,6 +3,7 @@
 //Database dependencies
 var db = require('../models');
 var helper = require('./helper.js');
+var sequelize = require('../config/connection.js');
 
 //Routes
 module.exports = function(app, passport) {
@@ -19,7 +20,7 @@ module.exports = function(app, passport) {
 			location: req.body.blogLocation,
 			rating: req.body.blogRating,
 			//Facebook ID used for user Id
-			UserId: req.user[0].dataValues.UserId
+			UserId: req.user[0].dataValues.id
 		});
 
 		res.redirect('/loggedIn');
@@ -35,12 +36,17 @@ module.exports = function(app, passport) {
 	});
 
 	//Getting posts for a specific location
-	
-	//Filtering by rating
-
-	//Filter by rating AND location
-
-	//Filter by name search
-
+	app.get('/search/:location', function(req, res) {
+		var location = req.params.location.toLowerCase();
+		var whereCondition = '%'+location+'%';
+		//Search DB based on location, find locations like the one submitted
+		db.BlogPost.findAll({
+			where: { location: { $like: whereCondition } },
+			limit: 10,
+			include: [db.Users]	
+		}).then(function(blogSearchResults) {
+			res.json(blogSearchResults);
+		});
+	});
 
 }
