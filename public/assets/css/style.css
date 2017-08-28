@@ -85,6 +85,7 @@
 #map {
     text-align: center;
     margin-bottom: 7px;
+    height: 500px;
 }
 
 #submit {
@@ -100,7 +101,7 @@ footer {
     font-family: 'Cedarville Cursive', cursive;
     font-family: 'Tangerine', cursive;
     font-size: 25px;
-    color: white;   
+    color: white;
     text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
 }
 
@@ -135,7 +136,6 @@ footer {
 .container-fluid {
 background-color: black;
 }
-
 
 .profileImage {
     height:75px;
